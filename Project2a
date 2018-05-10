@@ -8,7 +8,13 @@
 #include <string>
 #include <iomanip>
 #include <fstream>
+#include <vector>
 using namespace std;
+//Project Part 2
+
+
+
+//Project Part 1
 double subtotal;
 void totalP(double);
 void totaltoppings();
@@ -30,10 +36,11 @@ int main()
 do {
   cout << "username: ";
   cin>>username;
-  if (username == "Coldies") {
+  if (username == "Angel"||"Victor"||"Loren"||"Brenda"||"Jake") {
     cout << "password: ";
     cin>>password;
     if (password != "1234") {
+      cin>>password;
       cout << "invalid password. try again." <<endl;
     }
   } else {
@@ -189,7 +196,9 @@ do {
 		total=toppingselect+cupprice+coneprice+subtotal;
         cout<<endl;
         cout<<"---------------------------------------------------------------"<<endl;
+        cout<<"Customer: "<<username<<endl;
         cout<<"\nYour total is: "<<total<<endl;
+        
         
         //outputting ice cream total into a text file 
         ofstream myfile;
