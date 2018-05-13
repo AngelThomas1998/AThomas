@@ -1,3 +1,4 @@
+
 // Angel Thomas
 // Victor Ramirez
 //April 2 2018
@@ -21,7 +22,7 @@ void totaltoppings();
 int scoopchoice;
 int toppingselect={1};
 string toppingchoice;
-int scoops[3] = { 1, 2, 3 };    // Array for number of scoops
+int scoops[4] = { 1, 2, 3 };    // Array for number of scoops
 double scoopprice[3] = { 1.99, 2.99, 3.99 };    //Scoop price
 string flavors[3] = { "Vanilla", "Strawberry", "Chocolate" };
 string scoopsize[3] = { "Single", "Double", "Triple" };
@@ -30,30 +31,39 @@ string additionaltopping;
 string basechoice;
 int main()
 {
+  
+  
+  
   //User login
-  string username;
- string password;
+string username;
+string password;
 do {
   cout << "username: ";
   cin>>username;
-  if (username == "Angel"||"Victor"||"Loren"||"Brenda"||"Jake") {
+  if ((username == "Angel")||(username == "Victor")||(username == "Loren") ||(password=="1234")) {
     cout << "password: ";
     cin>>password;
-    if (password != "1234") {
-      cin>>password;
-      cout << "invalid password. try again." <<endl;
+    
+    if (password!= "1234")
+    cout<<"Incorrect password. Please enter your login again."<<endl;
+    
+     else if ((username == "Angel")|| (username == "Victor")||(username == "Loren")) {
+      cout << "Login Successful" <<endl;
+     
+     
     }
   } else {
-    cout << "invalid username. try again." <<endl;
+      cout << "Incorrect username. Try again." <<endl;
   }
-} while (password != "1234");
+} while (password != "1234" );
   
   
   
         //Initialize and Declaring variables
 	int flavorchoice;
-	float coneprice = 3.99;
 	float cupprice = 4.99;
+	float coneprice = 3.99;
+	
         
         //Set precision to 2 decimal places
         cout<<fixed<<showpoint<<setprecision(2);
@@ -69,7 +79,7 @@ do {
            //cone or cup
 	if (basechoice == "Cup" || "cup")
 	{
-		cout << "price is " << cupprice << endl;
+		cout << "price is " << cupprice<< endl;
 	}
 	else if (basechoice == "Cone" || "cone")
 	{
@@ -139,6 +149,7 @@ do {
 	{
 		subtotal = 3.99;
 		cout << "Your scoop price is " << subtotal << endl;
+		break;
 	}
 	default:
 	{
@@ -211,3 +222,4 @@ do {
 	
 
 }
+
