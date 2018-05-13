@@ -12,9 +12,9 @@
 #include <vector>
 using namespace std;
 //Project Part 2
-
-
-
+  void selectionSort(vector<string>&);
+  void swap(string &, string &);
+  int binarySearch(const vector<string>&, string);
 //Project Part 1
 double subtotal;
 void totalP(double);
@@ -29,12 +29,104 @@ string scoopsize[3] = { "Single", "Double", "Triple" };
 string toppings[3] = { "Chocolate Chips", "Almonds", "Fruit" };
 string additionaltopping;
 string basechoice;
+
+
+// The selectionSort function sorts a string vector in ascending order.*
+
+    void selectionSort(vector<string> &v)
+   {
+      int minIndex;
+      string minValue;
+
+      for (int start = 0; start < (v.size() - 1); start++)
+      {
+        minIndex = start;
+        minValue = v[start];
+        for (int index = start + 1; index < v.size(); index++)
+          {
+            if (v[index] < minValue)
+            {
+            minValue = v[index];
+            minIndex = index;
+            }
+          }
+        swap(v[minIndex], v[start]);
+      }
+    }
+
+
+    // The swap function swaps a and b in memory. 
+    void swap(string &a, string &b)
+    {
+      string temp = a;
+      a = b;
+      b = temp;
+    }
+
+
+    int binarySearch(const vector<string> &v, string str)
+    {
+      int first = 0,            // First vector element
+          last = v.size() - 1,  // Last vector element
+          middle,               // Mid point of search
+          position = -1;        // Position of search value
+      bool found = false;       // Flag
+
+      while (!found && first <= last)
+      {
+        middle = (first + last) / 2; // Calculate mid point
+        if (v[middle] == str)        // If value is found at mid
+        {
+          found = true;
+          position = middle;
+        }
+          else if (v[middle] > str)    // If value is in lower half
+              last = middle - 1;
+          else
+              first = middle + 1;      // If value is in upper half
+        }
+        return position;
+    }
+
+
+
+
 int main()
 {
   
+  //sorting customer names in ascending order
+  
+  string searchValue;  // Value to search for
+  int position;        // Position of found value
+
+  // Define a vector of strings.
+  vector<string> name{ "Angel", "Victor", "Loren"
+                         };
+
+  // Sort the vector.
+  selectionSort(name);
+
+  // Display the vector's elements.
+  cout << "Here are the sorted names:\n";
+  for (auto element : name)
+    cout << element << endl;
+    cout << endl;
+
+  // Search for a name.
+    cout << "Enter a name to search for: ";
+    getline(cin, searchValue);
+    position = binarySearch(name, searchValue);
+  
+  // Display the results.
+  if (position != -1)
+    cout << "That name is found at position " << (position+1) << endl<<endl;
+  else 
+    cout << "That name is not found.\n";
   
   
-  //User login
+    //USER LOGIN
+  cout<<"CUSTOMER LOGIN: "<<endl;
+  cout<<"(*User must include capital for the first letter of their name*)"<<endl<<endl;
 string username;
 string password;
 do {
@@ -59,7 +151,7 @@ do {
   
   
   
-        //Initialize and Declaring variables
+  //Initialize and Declaring variables
 	int flavorchoice;
 	float cupprice = 4.99;
 	float coneprice = 3.99;
@@ -199,6 +291,9 @@ do {
 
 
 	}
+	
+
+
 	
         //Function to determine ice cream total by adding toppings, cups or cone
 	void total(double);
